@@ -9,6 +9,7 @@ Original file is located at
 
 import pandas as pd
 import numpy as np
+import os
 
 # !pip install dash
 # !pip install trimesh
@@ -148,6 +149,9 @@ def update_plot(selected_row, fighter):
 
     return fig
 
+# Get the port from the environment variable (Render sets this automatically)
+port = int(os.environ.get('PORT', 8050))  # Default to 8050 if not se
+
 # Run the app
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(host='0.0.0.0', port=port)
